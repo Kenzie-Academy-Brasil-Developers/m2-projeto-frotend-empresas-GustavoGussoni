@@ -66,9 +66,21 @@ async function register(body) {
     }
 }
 
+async function verifyUser(token){
+    try {
+        const request = await fetch(`${baseURL}/auth/validate_user`, {
+            method: "GET",
+            headers: {
+                "Authorization": token
+            }
+        })
+        const response = await request.json()
+        return response.is_admin
+    }catch(err) {
+        return err
+    }
+}
 
-//MUDAR A VALIDAÇÃO DE ADMIN PARA REDIRECIONAR
-//OLHAR API >> LISTAR TODOS OS USUÁRIOS
 async function login(body) {
     try {
         const request = await fetch(`${baseURL}/auth/login`, {
@@ -78,9 +90,13 @@ async function login(body) {
             },
             body: JSON.stringify(body)
         })
+        const response = await request.json()
         if (request.ok) {
+            localStorage.setItem("user", JSON.stringify(response))
             toast("Deu certo!", "Redirecionando")
-            if (body.email == "admin@mail.com" && body.password == "admin") {
+            const token = `Bearer ${response.token}`
+                        
+            if (await verifyUser(token)) {
                 setTimeout(() => {                    
                     window.location.assign("/src/pages/admin/index.html")
                 }, 4000)
@@ -90,7 +106,7 @@ async function login(body) {
                 }, 4000)
             }
         }
-        const response = await request.json()
+        
         if(response.error == "email invalid!") {
             toast("Email incorreto!", "Favor inserir novamente.")
             return
@@ -99,7 +115,7 @@ async function login(body) {
             toast("Senha incorreta!", "Favor inserir novamente.")
             return
         }
-        localStorage.setItem("user", JSON.stringify(response))
+        
         
     } catch (err) {
         console.log(err)

@@ -48,6 +48,7 @@ const eventLogin = () => {
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
+        localStorage.removeItem("user")
         const body = {}
 
         elements.forEach((elem) => {
@@ -59,7 +60,5 @@ const eventLogin = () => {
     })
 }
 eventLogin()
-
-
 
 

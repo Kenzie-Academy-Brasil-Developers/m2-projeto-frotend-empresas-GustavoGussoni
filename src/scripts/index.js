@@ -28,7 +28,7 @@ function goToLogin() {
         })
 
     })
-    
+
 }
 goToLogin()
 
@@ -38,7 +38,7 @@ function goToRegister() {
             window.location.assign("/src/pages/register/index.html")
         })
 
-    })    
+    })
 }
 goToRegister()
 
@@ -49,7 +49,7 @@ async function renderCompaniesAtWindown(listToRender) {
 
     const companies = await listToRender
     listComp.innerHTML = ""
-    
+
     const createCards = companies.forEach((elem) => {
 
         const cardLi = document.createElement("li")
@@ -71,28 +71,27 @@ async function renderCompaniesAtWindown(listToRender) {
 }
 await renderCompaniesAtWindown(renderCompany())
 
-// findSectors()
+
 async function renderSectors() {
     const selectButton = document.getElementById("select-home")
     const sectorsFound = await findSectors()
-    console.log(sectorsFound)
+
     sectorsFound.forEach((elem) => {
         const options = document.createElement("option")
         options.innerText = `${elem.description}`
         options.value = `${elem.description}`
         selectButton.appendChild(options)
-    })  
+    })
 }
 renderSectors()
-
 
 async function renderByClick() {
     const selectSector = document.getElementById("select-home")
 
     selectSector.addEventListener("change", (event) => {
-       const value = `${event.target.value}`
-       renderCompaniesAtWindown(findCompaniesBySector(value))
-    })    
-    }  
+        const value = `${event.target.value}`
+        renderCompaniesAtWindown(findCompaniesBySector(value))
+    })
+}
 
 renderByClick()
