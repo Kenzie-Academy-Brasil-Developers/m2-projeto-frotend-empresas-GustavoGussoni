@@ -14,6 +14,18 @@ async function renderCompany() {
     }
 }
 
+async function findSectors() {
+    try {
+        const request = await fetch(`${baseURL}/sectors`, {
+            method: "GET"
+        })
+        const response = await request.json()
+        return response
+    }catch(err) {
+        console.log(err)
+    }
+}
+
 async function findCompaniesBySector(sector) {
     try {
         const request = await fetch(`${baseURL}/companies/${sector}`, {
@@ -39,7 +51,7 @@ async function register(body) {
         if (request.ok) {
             toast("Sua conta foi criada com sucesso!", "Agora você pode acessar os conteudos utilizando seu usuário e senha na página de login")
             setTimeout(() => {
-                window.location.assign("/index.html")
+                window.location.assign("/src/pages/login/index.html")
             }, 4000)
         }
         const response = await request.json()
@@ -54,6 +66,9 @@ async function register(body) {
     }
 }
 
+
+//MUDAR A VALIDAÇÃO DE ADMIN PARA REDIRECIONAR
+//OLHAR API >> LISTAR TODOS OS USUÁRIOS
 async function login(body) {
     try {
         const request = await fetch(`${baseURL}/auth/login`, {
@@ -95,5 +110,6 @@ export {
     renderCompany,
     findCompaniesBySector,
     register,
-    login
+    login,
+    findSectors
 }

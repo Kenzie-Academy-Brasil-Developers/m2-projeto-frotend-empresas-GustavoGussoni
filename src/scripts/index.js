@@ -1,5 +1,6 @@
 import { renderCompany } from "./requests.js"
 import { findCompaniesBySector } from "./requests.js"
+import { findSectors } from "./requests.js"
 
 
 const bttDropDown = document.querySelector(".btt-dropdown")
@@ -70,6 +71,19 @@ async function renderCompaniesAtWindown(listToRender) {
 }
 await renderCompaniesAtWindown(renderCompany())
 
+// findSectors()
+async function renderSectors() {
+    const selectButton = document.getElementById("select-home")
+    const sectorsFound = await findSectors()
+    console.log(sectorsFound)
+    sectorsFound.forEach((elem) => {
+        const options = document.createElement("option")
+        options.innerText = `${elem.description}`
+        options.value = `${elem.description}`
+        selectButton.appendChild(options)
+    })  
+}
+renderSectors()
 
 
 async function renderByClick() {
@@ -80,4 +94,5 @@ async function renderByClick() {
        renderCompaniesAtWindown(findCompaniesBySector(value))
     })    
     }  
+
 renderByClick()

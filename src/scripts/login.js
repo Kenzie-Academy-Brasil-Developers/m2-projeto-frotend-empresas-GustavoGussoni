@@ -63,7 +63,3 @@ eventLogin()
 
 
 
-// login({
-//     "email": "kenzinho@mail.com",
-//     "password": "1234"
-//  })
