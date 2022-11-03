@@ -1,0 +1,73 @@
+HOME
+
+1 - redirecionamento para as páginas de cadastro e login
+2 - exibir uma lista de todas as empresas cadastradas na API
+3 - Permitir filtrar a listagem de empresas por setor
+4 - Sem restrições, qualquer um pode entrar nessa página e acessar os dados
+
+
+REGISTER
+
+1 - formulário de cadastro de usuário com os seguintes campos:
+  1.1 - username
+  1.2 - email
+  1.3 - password
+  1.4 - professional_level - opcional
+2 - botão para redirecionar para a página de login
+
+obs: 
+
+Caso o cadastro seja bem-sucedido, deverá redirecionar o usuário para a tela de login, 
+caso contrário, ou seja, a requisição seja inválida, deverá retornar um feedback para o usuário 
+(uma mensagem de erro).
+
+Não é necessário criar um usuário admin!! Estará setado no banco apenas um único admin. 
+Esse usuário será considerado o dono de todas as empresas da aplicação.
+
+
+LOGIN
+
+1 - formulário de login com: 
+  1.1 - email
+  1.2 - senha
+2 - persistir os dados no localStorage
+3 - botão para redirecionar para a pagina REGISTER
+
+obs:
+
+cadastro bem sucedido: localstorage, redireciona para a tela respectiva (user ou adm)
+utilizar a requisição de autenticação para validar o tipo de usuário
+
+se o usuário for adm:
+
+seção departamentos:
+1 - formulário de cadastro de departamento para uma empresa específica
+2 - listar todos os departamentos de uma empresa específica
+3 - ao clicar em um departamento, visualizar dados específicos dele: funcionários, descrição, nome e a empresa
+4 - listar todos os funcionários de um departamento com nome, nível proficssional, tipo de trabalho
+5 - contratar e demitir um funcionário de um departamento
+
+seção usuários:
+1 - modificar a modalidade de trabalho (home office, presencial, híbrido) e o cargo (estágio, junior, pleno, 
+senior)
+2 - listar todos os usuários cadastrados na aplicação
+
+
+
+se o usuário for user:
+
+1 - visualiza apenas sua empresa
+2 - visualiza apenas o seu departamento
+3 - listar todos os funcionários do departamento a qual pertence com o nome e o nível profissional
+4 - editar suas próprias informações (password, email e username)
+5 - caso ele não pertença a nenhum departamento, adicionar mensagem na tela: "você ainda não foi contratado"
+ou uma msg com o mesmo significado
+
+
+
+
+
+
+
+
+

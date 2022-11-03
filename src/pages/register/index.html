@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/styles/globalStyles.css">
+    <link rel="stylesheet" href="/src/styles/register.css">
+    <link rel="stylesheet" href="/src/styles/toast.css">
+    <title>Register - Kenzie Empresas</title>
+</head>
+<body>
+    <header id="desktop" class="container">
+        <section class="sec-header">
+            <div class="head-img">
+                <img class="img-ellipse" src="/src/img/Ellipse 1 (1).png" alt="">
+                <img src="/src/img/Kenzie Empresas.png" alt="">
+            </div>
+            <div class="head-btt">
+                <button class="btt-home" data-home="btt-home">Home</button>
+                <button class="btt-login" data-login="btt-login">Login</button>
+            </div>
+        </section>
+    </header>
+    <header id="mobile" class="container">
+        <section class="sec-header">
+            <div class="head-img">
+                <img class="img-ellipse" src="/src/img/Ellipse 1 (1).png" alt="">
+                <img src="/src/img/Kenzie Empresas.png" alt="">
+            </div>
+            <div class="div-btts-dropdown"> 
+                <button class="btt-dropdown">☰</button>     
+                <button class="btt-close-dropdown">X</button>           
+            </div>
+        </section>
+        <div class="head-btt-down">
+            <button class="btt-home-down" data-home="btt-home">Home</button>
+            <button class="btt-login-down" data-login="btt-login">Login</button>
+        </div>
+    </header>
+
+    <main class="container">        
+        <div class="div-create">
+            <h2>Cadastre-se</h2>
+            <form action="" class="form-register">
+                <input type="text" name="username" placeholder="Seu nome">
+                <input type="email" name="email" placeholder="Seu e-mail">
+                <input type="password" name="password" placeholder="Sua senha">
+                <select name="professional_level" id="#select-prof">
+                    <option value="">Nível profissional</option>
+                    <option value="estágio">Estágio</option>
+                    <option value="júnior">Júnior</option>
+                    <option value="pleno">Pleno</option>
+                    <option value="sênior">Sênior</option>
+                </select>
+                <button class="btt-confirm-reg">Cadastre-se</button>
+            </form>
+            <button class="btt-return">Retornar</button>
+            
+        </div>
+
+    </main>
+    
+
+    <script type="module" src="/src/scripts/register.js"></script>
+</body>
+</html>

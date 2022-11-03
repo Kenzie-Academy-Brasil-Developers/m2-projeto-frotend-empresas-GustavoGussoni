@@ -1,0 +1,44 @@
+.div-toast {
+    width: 442px;
+    height: 125px;
+    display: flex;
+    flex-direction: column;
+    padding: 21px 32px;    
+    position: fixed;
+    right: 16px;
+    bottom: 28px;
+    gap: 17px;
+    background: var(--grey9);
+    box-shadow: 0px 4px 30px -12px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    animation: toastIt 4000ms ease-in forwards;
+}
+
+
+@keyframes toastIt {
+    0% {right: 16px; bottom: -150px}
+    25% {right: 16px; bottom: 28px}
+    50% {right: 16px; bottom: 28px}
+    100% {right: 16px; bottom: -150px}
+}
+
+
+
+.div-toast-head {
+    display: flex;
+    gap: 12px;
+}
+
+.toast-title {
+    font-size: var(--font-size-2);
+    font-weight: var(--font-weight-2);
+    line-height: var(--line-height-1);
+    color: var(--sucess1);
+}
+
+.toast-text {
+    font-weight: var(--font-weight-1);
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+    color: var(--grey2);
+}
