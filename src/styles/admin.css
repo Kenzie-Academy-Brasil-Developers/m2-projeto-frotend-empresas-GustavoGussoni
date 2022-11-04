@@ -50,6 +50,7 @@ main {
     width: 100%;
     min-width: 380px;
     max-width: 1180px;
+    
 }
 
 .sec-main-admin {
@@ -132,12 +133,15 @@ button:hover {
     height: 196px;
     background: var(--white);
     border-bottom: 1px solid var(--blue);
-    padding: 18px 0 21px 29px;
+    padding: 18px 29px 21px 29px;
     display: flex;
     flex-direction: column;
     gap: 22px;
 }
 
+.card-head {
+    overflow: hidden;
+}
 .card-head h3 {
     font-weight: var(--weight2);
     font-size: var(--size4);

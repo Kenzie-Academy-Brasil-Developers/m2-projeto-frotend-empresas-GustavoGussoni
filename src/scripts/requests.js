@@ -139,6 +139,61 @@ async function renderDepartments() {
     }
 }
 
+async function createDepartment(body, token){
+    try {
+        const request = await fetch(`${baseURL}/departments`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+            },
+            body: JSON.stringify(body)
+        })
+        if(request.ok) {
+            toast("Departamento criado com sucesso!", "")
+        }
+        else {
+            toast("Departamento não foi criado!", "Selecione uma empresa")
+            return
+        }
+        const response = await request.json()
+        return response
+    }catch(err) {
+        return err
+    }
+}
+
+async function editDepartment(body, token, id){
+    try {
+        const request = await fetch(`${baseURL}/departments/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+            },
+            body: JSON.stringify(body)
+        })
+        const response = await request.json()
+        return response
+    }catch (err) {
+        return err
+    }
+}
+
+async function deleteDepartment(token, id){
+    try {
+        const request = await fetch(`${baseURL}/departments/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": token
+            }
+        })
+        
+    }catch(err){
+        return err
+    }
+}
+
 export {
     renderCompany,
     findCompaniesBySector,
@@ -146,5 +201,9 @@ export {
     login,
     findSectors,
     verifyUser,
-    renderDepartments
+    renderDepartments,
+    createDepartment,
+    editDepartment,
+    deleteDepartment
+    
 }
