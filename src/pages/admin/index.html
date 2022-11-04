@@ -36,14 +36,14 @@
                     <button class="create-dep">Criar</button>
                 </div>
                 <div class="depart-main">
-                    <ul class="depart-list">                                              
+                    <ul class="depart-list">
 
                     </ul>
                 </div>
             </div>
             <div class="div-users">
                 <div class="users-head">
-                    <h2>Usuários cadastratos</h2>                   
+                    <h2>Usuários cadastratos</h2>
                 </div>
                 <div class="users-main">
                     <ul class="users-list">
@@ -53,7 +53,7 @@
                                 <p>Description</p>
                                 <p>Company Name</p>
                             </div>
-                            <div class="card-btns">                               
+                            <div class="card-btns">
                                 <button class="btt-edit-card-user"></button>
                                 <button class="btt-delete-card-user"></button>
                             </div>
@@ -64,7 +64,7 @@
                                 <p>Description</p>
                                 <p>Company Name</p>
                             </div>
-                            <div class="card-btns">                               
+                            <div class="card-btns">
                                 <button class="btt-edit-card-user"></button>
                                 <button class="btt-delete-card-user"></button>
                             </div>
@@ -75,7 +75,7 @@
                                 <p>Description</p>
                                 <p>Company Name</p>
                             </div>
-                            <div class="card-btns">                               
+                            <div class="card-btns">
                                 <button class="btt-edit-card-user"></button>
                                 <button class="btt-delete-card-user"></button>
                             </div>
@@ -86,19 +86,19 @@
                                 <p>Description</p>
                                 <p>Company Name</p>
                             </div>
-                            <div class="card-btns">                               
+                            <div class="card-btns">
                                 <button class="btt-edit-card-user"></button>
                                 <button class="btt-delete-card-user"></button>
                             </div>
                         </li>
-                        
-                        
+
+
 
                     </ul>
                 </div>
             </div>
         </section>
-        
+
 
     </main>
     <div class="modal-wrapper-create-dep">
@@ -131,15 +131,113 @@
         <div class="wrapper-delete-dep">
             <h2>Realmente deseja deletar o Departamento Nome e demitir seus funcionários?</h2>
             <button class="btt-close-modal-delete-dep">X</button>
-            <button class="btt-delete-dep" type="submit">Deletar</button>            
+            <button class="btt-delete-dep" type="submit">Deletar</button>
         </div>
     </div>
+
+    <div class="modal-wrapper-open-dep">
+        <div class="wrapper-open-dep">
+            <h2 class="name-open-dep">Nome do departamento</h2>
+            <button class="btt-close-modal-open-dep">X</button>
+            <div class="div-head-modal-open-dep">
+                <div class="div-descrip-open">
+                    <h3 class="descrip-open-dep">Descrição do departamento</h3>
+                    <p class="company-open-dep">Empresa pertencente</p>
+                </div>
+                <form class="form-admit">
+                    <select class="users-out-of-work" name="" id="">
+                        <option value="">Selecionar usuário</option>
+                    </select>
+                    <button class="btt-admit" type="submit">Contratar</button>
+                </form>
+            </div>
+            <div class="div-list-users-modal">
+                <ul class="users-modal-list">
+                    <li class="card-modal-users">
+                        <div class="div-card-info">
+                            <h3>username</h3>
+                            <p>pleno</p>
+                            <p>company Name</p>
+                        </div>
+                        <button class="btt-dismiss">Desligar</button>
+                    </li>
+                    <li class="card-modal-users">
+                        <div class="div-card-info">
+                            <h3>username</h3>
+                            <p>pleno</p>
+                            <p>company Name</p>
+                        </div>
+                        <button class="btt-dismiss">Desligar</button>
+                    </li>
+                    <li class="card-modal-users">
+                        <div class="div-card-info">
+                            <h3>username</h3>
+                            <p>pleno</p>
+                            <p>company Name</p>
+                        </div>
+                        <button class="btt-dismiss">Desligar</button>
+                    </li>
+                    <li class="card-modal-users">
+                        <div class="div-card-info">
+                            <h3>username</h3>
+                            <p>pleno</p>
+                            <p>company Name</p>
+                        </div>
+                        <button class="btt-dismiss">Desligar</button>
+                    </li>
+                    <li class="card-modal-users">
+                        <div class="div-card-info">
+                            <h3>username</h3>
+                            <p>pleno</p>
+                            <p>company Name</p>
+                        </div>
+                        <button class="btt-dismiss">Desligar</button>
+                    </li>
+                    <li class="card-modal-users">
+                        <div class="div-card-info">
+                            <h3>username</h3>
+                            <p>pleno</p>
+                            <p>company Name</p>
+                        </div>
+                        <button class="btt-dismiss">Desligar</button>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
 
     <div class="modal-wrapper-delete-user">
         <div class="wrapper-delete-user">
             <h2>Realmente deseja remover o usuário Nome</h2>
             <button class="btt-close-modal-delete-user">X</button>
-            <button class="btt-delete-user" type="submit">Deletar</button>            
+            <button class="btt-delete-user" type="submit">Deletar</button>
+        </div>
+    </div>
+
+    <div class="modal-wrapper-edit-user">
+        <div class="wrapper-edit-user">
+            <h2>Editar Usuário</h2>
+            <button class="btt-close-modal-edit-user">X</button>
+            <form class="form-edit-user" action="">
+                <select name="kind_of_work" id="select-edit-user-kind">
+                    <option value="">Selecionar modalidade de trabalho</option>
+                    <option value="home office">Home Office</option>
+                    <option value="presencial">Presencial</option>
+                    <option value="hibrido">Híbrido</option>
+                </select>                
+                <select name="professional_level" id="select-edit-user-level">
+                    <option value="">Selecionar nível profissional</option>
+                    <option value="estágio">Estágio</option>
+                    <option value="júnior">Júnior</option>
+                    <option value="pleno">Pleno</option>
+                    <option value="sênior">Sênior</option>
+                </select>
+                <button class="btt-edit-user" type="submit">Editar</button>
+            </form>
         </div>
     </div>
 

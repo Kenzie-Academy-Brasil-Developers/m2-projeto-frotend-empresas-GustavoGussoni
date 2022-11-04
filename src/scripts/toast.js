@@ -19,7 +19,7 @@ export const toast = (title, message) => {
     toastText.classList.add("toast-text")
     toastText.innerHTML = message    
 
-    if(title == "Sua conta não foi criada!" || title == "Email incorreto!" || title == "Senha incorreta!" || title == "Departamento não foi criado!"){
+    if(title == "Sua conta não foi criada!" || title == "Email incorreto!" || title == "Senha incorreta!" || title == "Departamento não foi criado!" || title == "Erro!"){
         imgToast.src = "/src/img/Vector (1).png"
         toastTitle.style = "color: red"      
         toastText.style = "color: red"  

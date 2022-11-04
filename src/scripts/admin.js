@@ -4,16 +4,33 @@ import { renderDepartments } from "./requests.js"
 import { renderCompany } from "./requests.js"
 import { createDepartment } from "./requests.js"
 import { toast } from "./toast.js"
-
+import { usersOutOfWork } from "./requests.js"
+import { admitEmployee } from "./requests.js"
+import { renderUsers } from "./requests.js"
+import { deleteUser } from "./requests.js"
+import { editUser } from "./requests.js"
 
 const bttCreateDep = document.querySelector(".create-dep")
 const bttCloseModalCreateDep = document.querySelector(".btt-close-modal-create-dep")
 const modalCreateDep = document.querySelector(".modal-wrapper-create-dep")
+
 const modalEdit = document.querySelector(".modal-wrapper-edit-dep")
 const bttCloseModalEditDep = document.querySelector(".btt-close-modal-edit-dep")
+
 const modalDelete = document.querySelector(".modal-wrapper-delete-dep")
 const bttCloseModalDeleteDep = document.querySelector(".btt-close-modal-delete-dep")
 const bttModalDelete = document.querySelector(".btt-delete-dep")
+
+const modalOpenDep = document.querySelector(".modal-wrapper-open-dep")
+const bttCloseModalOpenDep = document.querySelector(".btt-close-modal-open-dep")
+
+const modalDeleteUser = document.querySelector(".modal-wrapper-delete-user")
+const bttCloseModalDeleteUser = document.querySelector(".btt-close-modal-delete-user")
+const bttDeleteUserModal = document.querySelector(".btt-delete-user")
+
+const modalEditUser = document.querySelector(".modal-wrapper-edit-user")
+const bttCloseModalEditUser = document.querySelector(".btt-close-modal-edit-user")
+const bttEditUserModal = document.querySelector(".btt-edit-user")
 
 bttCreateDep.addEventListener("click", () => {
     modalCreateDep.classList.add("show-modal")
@@ -27,7 +44,15 @@ bttCloseModalEditDep.addEventListener("click", () => {
 bttCloseModalDeleteDep.addEventListener("click", () => {
     modalDelete.classList.remove("show-modal-delete")
 })
-
+bttCloseModalOpenDep.addEventListener("click", () => {
+    modalOpenDep.classList.remove("show-modal-open-dep")
+})
+bttCloseModalDeleteUser.addEventListener("click", () => {
+    modalDeleteUser.classList.remove("show-modal-delete-user")
+})
+bttCloseModalEditUser.addEventListener("click", () => {
+    modalEditUser.classList.remove("show-modal-edit-user")
+})
 
 const verifyPermission = () => {
     const token = `Bearer ${getLocalStorage().token}`
@@ -49,7 +74,7 @@ const listDep = document.querySelector(".depart-list")
 
 async function renderDepartmentsAtWindown(listToRender) {
 
-    const departments = await listToRender
+    const departments = await listToRender    
 
     listDep.innerHTML = ""
 
@@ -76,6 +101,35 @@ async function renderDepartmentsAtWindown(listToRender) {
         const bttLook = document.createElement("button")
         bttLook.classList.add("btt-look-card")
         bttLook.id = `${elem.uuid}`
+        bttLook.addEventListener("click", async () => {
+            const id = bttEdit.id
+            modalOpenDep.classList.add("show-modal-open-dep")
+            const name = document.querySelector(".name-open-dep")
+            name.innerText = `${elem.name}`
+            const descrip = document.querySelector(".descrip-open-dep")
+            descrip.innerText = `${elem.description}`
+            const companyCard = document.querySelector(".company-open-dep")
+            companyCard.innerText = `${elem.companies.name}`
+            
+            const bttAdmitEmp = document.querySelector(".btt-admit")
+            bttAdmitEmp.id = id        
+            const listUsers = await renderUsers()
+            console.log(listUsers)
+          const usersList = () => listUsers.filter((elem) => {
+                if(elem.department_uuid === bttLook.id){                    
+                    return elem                            
+            }
+        })
+        
+           await renderUserCards(usersList())
+           
+
+       await renderUserOutOf()
+        
+            // renderModalOpenDep(id)
+        })
+
+
         const bttEdit = document.createElement("button")
         bttEdit.classList.add("btt-edit-card")
         bttEdit.id = `${elem.uuid}`
@@ -107,6 +161,81 @@ async function renderDepartmentsAtWindown(listToRender) {
 }
 
 await renderDepartmentsAtWindown(renderDepartments())
+
+async function renderUsersAtWindown(listToRenderUser, listToRenderDepart){
+    const users = await listToRenderUser
+    const dep = await listToRenderDepart
+    const listUser = document.querySelector(".users-list")
+    listUser.innerHTML = ""
+    
+    users.forEach((elem) => {
+        if (elem.is_admin != true){
+            const userCard = document.createElement("li")
+            userCard.classList.add("depart-cards")
+
+            const divCardHead = document.createElement("div")
+            divCardHead.classList.add("card-head")
+
+            const userName = document.createElement("h3")
+            userName.classList.add("card-user-name")
+            userName.innerText = `${elem.username}`
+            const userDescription = document.createElement("p")
+            userDescription.classList.add("card-user-desc")
+            userDescription.innerText = `${elem.professional_level}`
+            if(elem.professional_level == ""){
+                userDescription.innerText = "Nível profissional não informado"
+            }
+            
+            const userCompany = document.createElement("p")
+            userCompany.classList.add("card-user-comp")
+            dep.forEach((el) => {
+                if(el.uuid == elem.department_uuid){
+                    userCompany.innerText = `${el.companies.name}`
+                }if (elem.department_uuid == null){
+                    userCompany.innerText = "Usuário não contratado"
+                }
+            })
+
+            const divCardUserbtt = document.createElement("div")
+            divCardUserbtt.classList.add("card-btns")
+
+            const bttCardUserEdit = document.createElement("button")
+            bttCardUserEdit.classList.add("btt-edit-card-user")
+            bttCardUserEdit.id = elem.uuid
+            bttCardUserEdit.addEventListener("click", () => {
+                modalEditUser.classList.add("show-modal-edit-user")
+                bttEditUserModal.id = elem.uuid
+
+            })
+
+            const bttCardUserDelete = document.createElement("button")
+            bttCardUserDelete.classList.add("btt-delete-card-user")
+            bttCardUserDelete.id = elem.uuid
+            bttCardUserDelete.addEventListener("click", () => {
+                modalDeleteUser.classList.add("show-modal-delete-user")
+               
+                bttDeleteUserModal.id = elem.uuid
+
+            })
+
+            divCardHead.append(userName, userDescription, userCompany)
+
+            divCardUserbtt.append(bttCardUserEdit, bttCardUserDelete)
+
+            userCard.append(divCardHead, divCardUserbtt)
+
+            listUser.insertAdjacentElement("afterbegin", userCard)
+
+
+
+
+
+        }
+        
+    })
+}
+await renderUsersAtWindown(renderUsers(), renderDepartments())
+
 
 async function renderCompanySelect() {
     const selectButton = document.getElementById("select-company")
@@ -203,4 +332,134 @@ const eventDeleteDep = () => {
 }
 eventDeleteDep()
 
+const eventAdmitEmployee = async () => {
+    const token = `Bearer ${getLocalStorage().token}`
+    const bttAdmit = document.querySelector(".form-admit")    
+    const options = bttAdmit.elements    
+   
+    bttAdmit.addEventListener("submit", async (event) => {
+        event.preventDefault()
+        const idUser = options[0].value
+        const sectorId = options[1].id        
+        admitEmployee(token, idUser, sectorId)   
+        
+        renderUserOutOf()
+        
+    //     const listUsers = await renderUsers()
+    //     const usersList = listUsers.filter((elem) => {
+    //         if(elem.department_uuid === sectorId){                    
+    //             return elem                            
+    //     }
+    // })
 
+        
+        
+        
+        
+        
+    //    await renderUserCards(usersList)
+        
+    //    console.log(await usersList)
+    })
+
+     
+}
+eventAdmitEmployee()
+
+//////////////////////////////////////////////////////////
+
+//AQUIIIIIIIIIIIIIIIIIIIIIIIIIIII /\
+//FALTA RENDERIZAR OS USERS DEPOIS QUE CONTRATAR
+
+//////////////////////////////////////////////////////////
+
+
+
+ async function renderUserOutOf(){
+            const token = `Bearer ${getLocalStorage().token}`
+            const userList = await usersOutOfWork(token)
+            const usersOutOfW = document.querySelector(".users-out-of-work")
+            usersOutOfW.innerHTML = `<option value="">Selecionar usuário</option>`
+            userList.forEach((elem) => {                
+                
+                const optionUser = document.createElement("option")
+                optionUser.id = `${elem.id}`
+                optionUser.innerText = `${elem.username}`
+                optionUser.value = elem.uuid
+                usersOutOfW.append(optionUser)
+            })
+        }
+
+
+async function deleteUserFromList() {
+    bttDeleteUserModal.addEventListener("click", async (event) => {
+        deleteUser(bttDeleteUserModal.id)
+        toast("Sucesso!", "Usuário deletado")
+        setTimeout(() => {
+            modalDeleteUser.classList.remove("show-modal-delete-user")
+            renderUsersAtWindown(renderUsers(), renderDepartments())
+        }, 4000)
+
+    })
+}        
+deleteUserFromList()
+
+async function editUserInfo(){
+    const formEdit = document.querySelector(".form-edit-user")
+    const elements = [...formEdit.elements] 
+    
+    formEdit.addEventListener("submit", async (event) => {
+        event.preventDefault()
+        const body = {}
+        elements.forEach((elem) => {
+            if(elem.tagName == "SELECT" && elem.value != ""){
+                body[elem.name] = elem.value                
+                setTimeout(() => {
+                    modalEditUser.classList.remove("show-modal-edit-user")
+                    renderUsersAtWindown(renderUsers(), renderDepartments())
+                },4000)
+            }            
+        })
+        await editUser(body, bttEditUserModal.id)        
+    })
+}
+editUserInfo()
+
+async function renderUserCards(user){
+    const listUser = document.querySelector(".users-modal-list")
+    listUser.innerHTML = ""
+    const listCompany = await renderDepartments()       
+
+   const createCard = user.forEach((elem) => {   
+        const listCard = document.createElement("li")
+        listCard.classList.add("card-modal-users")
+
+        const divCard = document.createElement("div")
+        divCard.classList.add("div-card-info")
+
+        const listUserName = document.createElement("h3")
+        const listUserInfo = document.createElement("p")
+        const listUserCompany = document.createElement("p")
+        const bttRemoveUser = document.createElement("button")
+        bttRemoveUser.classList.add("btt-dismiss")
+        bttRemoveUser.id = `${elem.uuid}`
+        bttRemoveUser.innerText = "Desligar"
+
+        listUserName.innerText = `${elem.username}`
+        listUserInfo.innerText = `${elem.professional_level}`
+        if(elem.professional_level == ""){
+            listUserInfo.innerText = `Nível profissional não informado`
+        }
+        listCompany.forEach((el) => {
+           if (el.uuid == elem.department_uuid) {
+            listUserCompany.innerText = `${el.companies.name}`
+           }
+        })
+        divCard.append(listUserName, listUserInfo, listUserCompany)
+        listCard.append(divCard, bttRemoveUser)
+        listUser.append(listCard)     
+})
+return createCard
+}
+
+// renderUserCards()

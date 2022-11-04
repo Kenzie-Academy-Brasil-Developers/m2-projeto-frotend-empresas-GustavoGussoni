@@ -139,6 +139,22 @@ async function renderDepartments() {
     }
 }
 
+async function renderUsers(){
+    const token = `Bearer ${getLocalStorage().token}`
+    try{
+        const request = await fetch (`${baseURL}/users`, {
+            method: "GET",
+            headers: {
+                "Authorization": token
+            }
+        })
+        const response = await request.json()        
+        return response
+    }catch(err){
+        return err
+    }
+}
+
 async function createDepartment(body, token){
     try {
         const request = await fetch(`${baseURL}/departments`, {
@@ -194,6 +210,87 @@ async function deleteDepartment(token, id){
     }
 }
 
+async function usersOutOfWork(token){
+    try {
+        const request = await fetch(`${baseURL}/admin/out_of_work`, {
+            method: "GET",
+            headers: {
+                "Authorization": token
+            }
+        })
+        const response = await request.json()
+        return response
+    }catch(err){
+        return err
+    }
+
+}
+
+async function admitEmployee(token, user, dep){
+    try {
+        const request = await fetch(`${baseURL}/departments/hire/`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+            },
+            body: JSON.stringify({
+                "user_uuid": `${user}`,
+                "department_uuid": `${dep}`
+            })
+        })
+        if(request.ok) {
+            toast("Sucesso!", "Você acabou de contratar mais um dev")
+        }
+        const response = await request.json()        
+        if(response.error){
+            toast("Erro!", "Favor selecionar um dev")            
+        }
+        return response
+    }catch(err){
+        return err
+    }
+}
+
+async function deleteUser(id){
+    const token = `Bearer ${getLocalStorage().token}`
+    try {
+        const request = await fetch (`${baseURL}/admin/delete_user/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": token
+            }
+        })
+    }catch(err){
+        return err
+    }
+}
+
+async function editUser(body, id){
+    const token = `Bearer ${getLocalStorage().token}`
+    try {
+        const request = await fetch (`${baseURL}/admin/update_user/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+            },
+            body: JSON.stringify(body)
+        })
+        if(request.ok) {
+            toast("Sucesso!", "Você editou as informações do usuário")
+        }
+        const response = await request.json()        
+        if(response.error){
+            toast("Erro!", "Favor selecionar pelo menos uma opção")    
+            return        
+        }
+    }catch(err){
+        return err
+    }
+
+}
+
 export {
     renderCompany,
     findCompaniesBySector,
@@ -202,8 +299,12 @@ export {
     findSectors,
     verifyUser,
     renderDepartments,
+    renderUsers,
     createDepartment,
     editDepartment,
-    deleteDepartment
-    
+    deleteDepartment,
+    usersOutOfWork,
+    admitEmployee,
+    deleteUser,
+    editUser    
 }
