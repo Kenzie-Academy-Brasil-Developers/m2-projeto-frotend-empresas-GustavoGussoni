@@ -1,3 +1,4 @@
+import { getLocalStorage } from "./localStorage.js"
 import { toast } from "./toast.js"
 
 const baseURL = "http://localhost:6278"
@@ -122,10 +123,28 @@ async function login(body) {
     }
 }
 
+async function renderDepartments() {
+    const token = `Bearer ${getLocalStorage().token}`
+    try {
+        const request = await fetch(`${baseURL}/departments`, {
+            method: "GET",
+            headers: {
+                "Authorization": token
+            }
+        })
+        const response = await request.json()
+        return response
+    }catch(err){
+        return err
+    }
+}
+
 export {
     renderCompany,
     findCompaniesBySector,
     register,
     login,
-    findSectors
+    findSectors,
+    verifyUser,
+    renderDepartments
 }

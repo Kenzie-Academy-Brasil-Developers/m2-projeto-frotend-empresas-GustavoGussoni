@@ -1,0 +1,289 @@
+header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sec-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 14px;
+    min-width: 380px;
+    gap: 145px;
+    width: 100%;  
+    max-width: 1180px;
+}
+
+.head-img {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.img-ellipse {    
+    border-radius: 50%;    
+    width: 16px;
+    height: 16px;
+}
+
+.head-btt {
+    display: flex;
+    gap: 11px;
+}
+
+.btt-logout {
+    width: 142px;
+    height: 48px;
+    border: 1px solid var(--blue);
+    background: var(--white);
+    font-weight: var(--weight2);
+    font-size: var(--size3);
+    line-height: var(--height1);
+    color: var(--blue);     
+}
+
+.btt-logout:hover {
+    cursor: pointer;
+}
+
+main {
+    height: 100vh;
+    width: 100%;
+    min-width: 380px;
+    max-width: 1180px;
+}
+
+.sec-main-admin {
+    margin-top: 104px;
+    display: flex;
+    flex-direction: column;
+    gap: 69px;
+    width: 100%;
+    padding: 0px 14px;
+}
+
+.div-depart {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.depart-head {
+    display: flex;
+    align-items: center;
+    justify-content:space-between;    
+
+}
+
+.depart-head h2 {
+    font-weight: var(--weight2);
+    font-size: var(--size7);
+    line-height: var(--height3-1);
+    color: var(--black);
+}
+
+.depart-head select {
+    width: 282px;
+    text-align: center;
+    height: 32px;
+    border: 1px solid var(--black);
+    border-radius: 15px;
+    font-weight: var(--weight1);
+    font-size: var(--size4);
+    line-height: var(--height2);
+    color: var(--black);
+}
+
+.create-dep {
+    width: 150px;
+    height: 48px;
+    background-image: url(/src/img/add_FILL0_wght400_GRAD0_opsz48\ 1.png);
+    background-position: left;
+    background-repeat: no-repeat;    
+    background-color: var(--blue);        
+    border: none;
+    font-weight: var(--weight2);
+    font-size: var(--size3);
+    line-height: var(--height1);
+    color: var(--white);
+    position: relative;
+    right: 0;
+    top: -8px;
+    
+}
+button:hover {
+    cursor: pointer;
+}
+
+.depart-list {
+    display: flex;
+    padding: 34px 56px 0 56px;
+    background: #F8F8F8;
+    height: 385px;
+    flex-wrap: wrap;
+    overflow-y: auto;       
+    gap: 62px;     
+}
+.depart-list::-webkit-scrollbar {
+    width: 0px
+}
+
+.depart-cards {
+    width: 489px;
+    height: 196px;
+    background: var(--white);
+    border-bottom: 1px solid var(--blue);
+    padding: 18px 0 21px 29px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.card-head h3 {
+    font-weight: var(--weight2);
+    font-size: var(--size4);
+    line-height: var(--height2);
+    color: var(--black);
+    margin-bottom: 9px;
+}
+
+.card-head p {
+    font-weight: var(--weight1);
+    font-size: var(--size3);
+    line-height: var(--height1);
+    color: var(--black);
+
+}
+.card-head :nth-child(2){
+    margin-bottom: 10px;   
+}
+
+.card-btns {
+    display: flex;
+    justify-content: center;
+    gap: 14px;    
+    align-items: center;
+}
+
+.card-btns button {
+    border: none;
+    background-color: transparent;
+}
+
+.btt-look-card {
+    background-image: url(/src/img/olho.png.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 48px;
+    width: 48px;
+}
+
+.btt-edit-card {
+    background-image: url(/src/img/caneta.png.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 28px;
+    width: 28px;
+}
+
+.btt-delete-card {
+    background-image: url(/src/img/lixeira.png.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 34px;
+    width: 34px;
+}
+
+
+
+
+.div-user {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.users-head {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-bottom: 16px;
+}
+
+.users-head h2 {
+    font-weight: var(--weight2);
+    font-size: var(--size7);
+    line-height: var(--height3-1);
+    color: var(--black);
+}
+
+
+.users-list {
+    display: flex;
+    padding: 34px 56px 0 56px;
+    background: #F8F8F8;
+    height: 385px;
+    flex-wrap: wrap;
+    overflow-y: auto;       
+    gap: 62px;     
+}
+.users-list::-webkit-scrollbar {
+    width: 0px
+}
+
+.users-cards {
+    width: 489px;
+    height: 196px;
+    background: var(--white);
+    border-bottom: 1px solid var(--blue);
+    padding: 18px 0 21px 29px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.card-head h3 {
+    font-weight: var(--weight2);
+    font-size: var(--size4);
+    line-height: var(--height2);
+    color: var(--black);
+    margin-bottom: 9px;
+}
+
+.card-head p {
+    font-weight: var(--weight1);
+    font-size: var(--size3);
+    line-height: var(--height1);
+    color: var(--black);
+
+}
+.card-head :nth-child(2){
+    margin-bottom: 10px;   
+}
+
+.card-btns {
+    display: flex;
+    justify-content: center;
+    gap: 14px;    
+    align-items: center;
+}
+
+.card-btns button {
+    border: none;
+    background-color: transparent;
+}
+
+.btt-edit-card-user {
+    background-image: url(/src/img/caneta2.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 28px;
+    width: 28px;
+}
+
+.btt-delete-card-user {
+    background-image: url(/src/img/lixeira.png.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 34px;
+    width: 34px;
+}

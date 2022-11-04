@@ -7,8 +7,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 16px 14px;
-    min-width: 380px;
-    gap: 145px;
+    min-width: 380px;    
     width: 100%;  
 }
 

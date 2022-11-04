@@ -1,6 +1,7 @@
 import { login } from "./requests.js"
 
 
+
 const bttDropDown = document.querySelector(".btt-dropdown")
 const bttRemoveDrop = document.querySelector(".btt-close-dropdown")
 const divDropDown = document.querySelector(".head-btt-down")
@@ -60,5 +61,4 @@ const eventLogin = () => {
     })
 }
 eventLogin()
-
 
