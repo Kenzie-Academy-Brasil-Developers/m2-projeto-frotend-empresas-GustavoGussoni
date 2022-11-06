@@ -399,11 +399,12 @@ button {
     align-items: center;
     gap: 31px;
     overflow-x: auto;
+    overflow-y: hidden;
 }
 
 .users-modal-list:-webkit-scrollbar {
-    height: 9px;
-    background-color: var(--blue);
+    width: 0px;
+    height: 0px;
 }
 
 .card-modal-users {

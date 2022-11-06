@@ -1,0 +1,78 @@
+button {
+    cursor:pointer;
+}
+
+.modal-wrapper-edit-user {
+    height:100%;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.show-modal {
+    display: flex;
+}
+
+.wrapper-edit-user {
+    width: 506px;
+    height: 402px;
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    padding: 39px 41px 45px 42px;
+    position: fixed;
+    top:302px;
+}
+
+.wrapper-edit-user h2 {
+    font-weight: var(--weight2);
+    font-size: var(--size9);
+    line-height: var(--height4-1);
+
+}
+
+.btt-close-modal-edit-user {
+    position: relative;
+    top: -74px;
+    left: 414px;
+    width: 31px;
+    height: 31px;
+    border: none;
+    background-color: transparent;
+    font-size: var(--size4);
+    color: var(--black);
+}
+
+.form-edit-user{
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.form-edit-user input {
+    height: 52px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 17px;
+    font-weight: var(--weight1);
+    font-size: var(--size2);
+    line-height: var(--height1);
+    color: rgba(0,0,0,0.5);
+}
+
+
+.btt-edit-user{
+    height: 48px;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    font-weight: var(--weight2);
+    font-size: var(--size2);
+    line-height: var(--height1);   
+}
+

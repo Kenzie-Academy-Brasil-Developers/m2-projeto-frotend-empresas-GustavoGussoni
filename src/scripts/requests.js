@@ -291,6 +291,81 @@ async function editUser(body, id){
 
 }
 
+async function dismissUser(id){
+    const token = `Bearer ${getLocalStorage().token}`
+    try {
+        const request = await fetch (`${baseURL}/departments/dismiss/${id}`, {
+            method: "PATCH",
+            headers: {
+                "Authorization": token
+            }
+        }) 
+        const response = await request.json()
+        toast("Feito!", "Você demitiu o funcionário")
+        return response
+    }catch(err){
+        return err
+    }
+}
+
+async function userInfo(){
+    const token = `Bearer ${getLocalStorage().token}`
+    try {
+        const request = await fetch (`${baseURL}/users/profile`, {
+            method: "GET",
+            headers:{
+                "Authorization": token
+            }
+        })
+        const response = await request.json()
+        return response
+    }catch(err){
+        return err
+    }
+
+}
+
+async function changeUserInfo(body){
+    const token = `Bearer ${getLocalStorage().token}`
+    try{
+        const request = await fetch(`${baseURL}/users`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": token
+            },
+            body: JSON.stringify(body)
+        })
+        if(request.ok){
+            toast("Feito!", "Você alterou os dados")
+        }
+        const response = await request.json()
+        if(response.error == "email alread exists"){
+            toast("Erro!", "Favor inserir outro email.")
+        }
+        return response
+    }catch(err){
+        return err
+    }
+}
+
+async function coWorkers(){
+    const token = `Bearer ${getLocalStorage().token}`
+    try {
+        const request = await fetch (`${baseURL}/users/departments/coworkers`, {
+            method: "GET",
+            headers:{
+                "Authorization": token
+            }
+        })
+       const response = await request.json()
+       
+       return response
+    }catch(err){
+        return err
+    }
+} 
+
 export {
     renderCompany,
     findCompaniesBySector,
@@ -306,5 +381,9 @@ export {
     usersOutOfWork,
     admitEmployee,
     deleteUser,
-    editUser    
+    editUser,
+    dismissUser,
+    userInfo,
+    changeUserInfo,
+    coWorkers
 }

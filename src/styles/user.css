@@ -1,0 +1,183 @@
+header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.sec-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 14px;
+    min-width: 380px;
+    gap: 145px;
+    width: 100%;  
+    max-width: 1180px;
+}
+
+.head-img {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.img-ellipse {    
+    border-radius: 50%;    
+    width: 16px;
+    height: 16px;
+}
+
+.head-btt {
+    display: flex;
+    gap: 11px;
+}
+
+.btt-logout {
+    width: 142px;
+    height: 48px;
+    border: 1px solid var(--blue);
+    background: var(--white);
+    font-weight: var(--weight2);
+    font-size: var(--size3);
+    line-height: var(--height1);
+    color: var(--blue);     
+}
+
+.btt-logout:hover {
+    cursor: pointer;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 121px;
+    width: 1152px;
+    padding: 20px 14px;
+    min-width: 380px;
+    margin-top: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.info-name {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.name {
+    font-weight: var(--weight2);
+    font-size: var(--size7);
+    line-height: var(--height3-1);
+}
+
+.infos {
+    font-weight: var(--weight1);
+    font-size: var(--size5);
+    line-height: var(--height2-1);
+}
+
+.work {
+    display: flex;
+    gap: 142px;
+    align-self: self-end;
+}
+
+.btt-pen {
+    width: 35px;
+    height: 35px;
+    background-image: url(/src/img/caneta2.png);
+    background-position: left;
+    background-repeat: no-repeat;    
+    background-color: transparent;        
+    border: none;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
+    
+}
+
+.not-admit {
+    width: 100%;
+    padding: 20px 14px;
+    text-align: center;
+    min-width: 380px;
+    width: 1152px;
+    height: 467px;
+    min-width: 380px;
+    background: #F8F8F8;
+    border: 1px solid #A8A8A8;
+    margin: 44px 14px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.admited {
+    width: 100%;
+    
+    text-align: center;
+    min-width: 380px;
+    width: 1152px;
+    height: 467px;
+    min-width: 380px;
+    background: #F8F8F8;
+    border: 1px solid #A8A8A8;
+    margin: 53px 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+.infos-company {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 78px;
+    width: 100%;
+    background: var(--blue);
+    border: 1px solid var(--blue);
+    gap: 8px;
+    font-weight: var(--weight2);
+    font-size: var(--size7);
+    line-height: var(--height3-11);
+}
+
+.list-coo {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 58px;
+    gap: 13px;
+    column-gap: 40px;
+}
+
+.coo-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 318px;
+    height: 76px;
+    padding: 0 20px;
+    border: 1px solid var(--blue);
+}
+
+.name-coo {
+    font-weight: var(--weight2);
+    font-size: var(--size0);
+    line-height: var(--height0);
+
+}
+
+.level-coo {
+    font-weight: var(--weight1);
+    font-size: var(--size0);
+    line-height: var(--height0);
+}

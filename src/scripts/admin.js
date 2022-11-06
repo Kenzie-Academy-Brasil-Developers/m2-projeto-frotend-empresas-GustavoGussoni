@@ -1,5 +1,5 @@
 import { getLocalStorage } from "./localStorage.js"
-import { deleteDepartment, editDepartment, verifyUser } from "./requests.js"
+import { deleteDepartment, dismissUser, editDepartment, verifyUser } from "./requests.js"
 import { renderDepartments } from "./requests.js"
 import { renderCompany } from "./requests.js"
 import { createDepartment } from "./requests.js"
@@ -54,18 +54,21 @@ bttCloseModalEditUser.addEventListener("click", () => {
     modalEditUser.classList.remove("show-modal-edit-user")
 })
 
-const verifyPermission = () => {
+const verifyPermission = async () => {
     const token = `Bearer ${getLocalStorage().token}`
-    if (verifyUser(token)) {
-        return
-    } if (getLocalStorage() == "") {
-        window.location.assign("/index.html")
-        return
-    }
-    else {
-        window.location.assign("/src/pages/user/index.html")
-        return
-    }
+    const localStor = `${getLocalStorage()}`
+    
+     if (localStor == "") {
+    window.location.assign("/index.html")
+    return
+}
+if (await verifyUser(token)) {
+    return
+}
+else {
+    window.location.assign("/src/pages/user/index.html")
+    return
+}
 
 }
 verifyPermission()
@@ -342,37 +345,18 @@ const eventAdmitEmployee = async () => {
         const idUser = options[0].value
         const sectorId = options[1].id        
         admitEmployee(token, idUser, sectorId)   
+        setTimeout(() => {
+            modalOpenDep.classList.remove("show-modal-open-dep")            
+        }, 4000);
         
         renderUserOutOf()
         
-    //     const listUsers = await renderUsers()
-    //     const usersList = listUsers.filter((elem) => {
-    //         if(elem.department_uuid === sectorId){                    
-    //             return elem                            
-    //     }
-    // })
-
-        
-        
-        
-        
-        
-    //    await renderUserCards(usersList)
-        
-    //    console.log(await usersList)
+   
     })
 
      
 }
 eventAdmitEmployee()
-
-//////////////////////////////////////////////////////////
-
-//AQUIIIIIIIIIIIIIIIIIIIIIIIIIIII /\
-//FALTA RENDERIZAR OS USERS DEPOIS QUE CONTRATAR
-
-//////////////////////////////////////////////////////////
-
 
 
  async function renderUserOutOf(){
@@ -420,7 +404,8 @@ async function editUserInfo(){
                 },4000)
             }            
         })
-        await editUser(body, bttEditUserModal.id)        
+        await editUser(body, bttEditUserModal.id)   
+             
     })
 }
 editUserInfo()
@@ -444,6 +429,12 @@ async function renderUserCards(user){
         bttRemoveUser.classList.add("btt-dismiss")
         bttRemoveUser.id = `${elem.uuid}`
         bttRemoveUser.innerText = "Desligar"
+        bttRemoveUser.addEventListener("click", () => {
+            dismissUser(bttRemoveUser.id)
+            setTimeout(() => {
+                modalOpenDep.classList.remove("show-modal-open-dep")    
+            },4000);
+        })
 
         listUserName.innerText = `${elem.username}`
         listUserInfo.innerText = `${elem.professional_level}`
@@ -462,4 +453,12 @@ async function renderUserCards(user){
 return createCard
 }
 
-// renderUserCards()
+function logOut(){
+    const bttLogOut = document.querySelector(".btt-logout")
+    bttLogOut.addEventListener("click", () => {
+        localStorage.removeItem("user")
+        window.location.assign("/index.html")
+
+    })
+}
+logOut()

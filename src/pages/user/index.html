@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/styles/globalStyles.css">
+    <link rel="stylesheet" href="/src/styles/user.css">
+    <link rel="stylesheet" href="/src/styles/toast.css">
+    <link rel="stylesheet" href="/src/styles/modalUser.css">
+    <title>User page - Kenzie Empresas</title>
+</head>
+
+<body>
+    <header class="container">
+        <section class="sec-header">
+            <div class="head-img">
+                <img class="img-ellipse" src="/src/img/Ellipse 1 (1).png" alt="">
+                <img src="/src/img/Kenzie Empresas.png" alt="">
+            </div>
+            <div class="head-btt">
+                <button class="btt-logout">Logout</button>
+            </div>
+        </section>
+    </header>
+    <section class="container">
+        <div class="info">
+            <div class="info-name">
+                <h2 class="name"></h2>
+                <p class="email infos"></p>
+            </div>
+            <div class="work">
+                <p class="level infos"></p>
+                <p class="style infos"></p>
+            </div>
+            <button class="btt-pen"></button>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="not-admit">
+            <h1>Você ainda não foi contratado</h1>
+        </div>
+        <div class="admited">
+            <div class="infos-company">
+                <h2 class="comp-name"> </h2>
+                <span> - </span>
+                <h2 class="dep-name"></h2>
+            </div>
+            <div class="coo-work">
+                <ul class="list-coo">                   
+                </ul>
+            </div>
+        </div>
+    </main>
+
+
+
+    <div class="modal-wrapper-edit-user">
+        <div class="wrapper-edit-user">
+            <h2>Criar Departamento</h2>
+            <button class="btt-close-modal-edit-user">X</button>
+            <form class="form-edit-user" action="">
+                <input type="text" name="username" placeholder="Seu nome">
+                <input type="text" name="email" placeholder="Seu e-mail">
+                <input type="password" name="password" placeholder="Sua senha">
+                <button class="btt-edit-user" type="submit">Editar perfil</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="/src/scripts/user.js"></script>
+
+</body>
+
+</html>
